@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { POKEMON_TYPES } from '@/core/symbols/constants';
 import type { PokemonEntity } from './domain/entities/PokemonEntity';
+import { FavoritePokemonsContext } from '@/core/context/FavoritePokemonsContext';
 
 interface Props {
   pokemon: PokemonEntity;
@@ -9,6 +10,12 @@ interface Props {
 
 const PokemonCard = ({ pokemon }: Props) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const { toggleFavorites } = useContext(FavoritePokemonsContext);
+
+  const handleFavorite = () => {
+    toggleFavorites(pokemon);
+    setIsFavorite((current) => !current);
+  };
   const primaryType = POKEMON_TYPES.find(
     ({ name }) => name === pokemon.types[0]
   );
@@ -22,13 +29,8 @@ const PokemonCard = ({ pokemon }: Props) => {
       </p>
       <button
         type="button"
-        aria-label={
-          isFavorite
-            ? `Quitar ${pokemon.name} de favoritos`
-            : `Añadir ${pokemon.name} a favoritos`
-        }
         aria-pressed={isFavorite}
-        onClick={() => setIsFavorite((current) => !current)}
+        onClick={handleFavorite}
         className={`cursor-pointer absolute top-3 right-3 z-20 grid size-9 place-items-center rounded-full bg-linear-to-br from-slate-950 via-slate-800 to-slate-600 shadow-md transition duration-200 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${isFavorite ? 'text-amber-300' : 'text-white'}`}
       >
         <svg
