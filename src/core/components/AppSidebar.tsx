@@ -1,4 +1,5 @@
 import { BookOpen, Heart, House } from 'lucide-react';
+import { Link, useLocation } from 'react-router';
 
 import {
   Sidebar,
@@ -14,6 +15,8 @@ import {
 } from '@/assets/components/ui/sidebar';
 
 export function AppSidebar() {
+  const { pathname } = useLocation();
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -38,9 +41,9 @@ export function AppSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton
-                  isActive
+                  isActive={pathname === '/'}
                   tooltip="Inicio"
-                  render={<a href="#pokedex" />}
+                  render={<Link to="/" />}
                 >
                   <House />
                   <span>Inicio</span>

@@ -13,11 +13,11 @@ const PokemonCard = ({ pokemon }: Props) => {
   const { toggleFavorites } = useContext(FavoritePokemonsContext);
 
   const handleFavorite = () => {
-    toggleFavorites(pokemon);
     setIsFavorite((current) => !current);
+    toggleFavorites(pokemon);
   };
   const primaryType = POKEMON_TYPES.find(
-    ({ name }) => name === pokemon.types[0]
+    ({ name }) => name === pokemon?.types?.[0]
   );
 
   return (

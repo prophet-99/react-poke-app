@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import type { PokemonEntity } from '@/features/pokemons/domain/entities/PokemonEntity';
+import type { PokemonEntity } from '@/features/home/domain/entities/PokemonEntity';
 
 export interface FavoritePokemonsContextValue {
   favorites: PokemonEntity[];
