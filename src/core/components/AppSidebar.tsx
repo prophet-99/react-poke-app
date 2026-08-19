@@ -23,7 +23,7 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" tooltip="Pokédex">
-              <div className="flex size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <div className="flex shrink-0 size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                 <BookOpen />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
@@ -41,9 +41,9 @@ export function AppSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton
-                  isActive={pathname === '/'}
+                  isActive={pathname.includes('pokemons')}
                   tooltip="Inicio"
-                  render={<Link to="/" />}
+                  render={<Link to="/pokemons" />}
                 >
                   <House />
                   <span>Inicio</span>

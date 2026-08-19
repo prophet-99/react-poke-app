@@ -1,18 +1,28 @@
 import { useContext } from 'react';
 
+import { ArrowLeft } from 'lucide-react';
+
 import { FavoritePokemonsContext } from '@/core/context/FavoritePokemonsContext';
+import PokemonFavoriteCard from './PokemonFavoriteCard';
+import { useNavigate } from 'react-router';
 
 const PokemonFavorites = () => {
   const { favorites } = useContext(FavoritePokemonsContext);
+  const navigate = useNavigate();
 
   return (
     <>
-      <h1 className="mb-6 font-bold text-4xl">Favorite Pokemons</h1>
-      <article className="grid grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-4">
-        {favorites.map((f) => (
-          <section className="overflow-hidden h-50 rounded-lg shadow-md p-3 relative after:rounded-[50%] after:absolute after:block after:-bottom-5 after:-right-5 after:w-30 after:h-30 bg-white after:bg-gray-100">
-            {f.name}
-          </section>
+      <article className="flex items-center gap-4 mb-6 ">
+        <ArrowLeft
+          className="size-8 cursor-pointer"
+          onClick={() => navigate(-1)}
+        />
+        <h1 className="font-bold text-4xl">Favorite Pokemons</h1>
+      </article>
+
+      <article className="grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-4">
+        {favorites.map((p) => (
+          <PokemonFavoriteCard key={p.id} pokemon={p} />
         ))}
       </article>
     </>

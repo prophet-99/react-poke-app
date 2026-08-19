@@ -1,5 +1,5 @@
-import type { PokemonDetailResponse } from '@/features/pokemons/data/models/pokemonDetailResponse';
-import type { PokemonEntity } from '@/features/pokemons/domain/entities/PokemonEntity';
+import type { PokemonDetailResponse } from '@/features/home/data/models/pokemonDetailResponse';
+import type { PokemonEntity } from '@/features/home/domain/entities/PokemonEntity';
 
 const handleString = (value: string | null | undefined): string => value ?? '';
 
